@@ -1,5 +1,4 @@
-# ゲームクリエイターSNSのAPI
-
+# rust-api-sample
 
 # 最初に
 ```
