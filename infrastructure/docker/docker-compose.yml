@@ -1,0 +1,9 @@
+version: "3.6"
+services:
+  rust-actix-web:
+    build: ./rust
+    tty: true
+    volumes:
+      - ../../:/rust-actix-web
+    ports:
+      - 9999:80
