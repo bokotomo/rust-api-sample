@@ -1,5 +1,7 @@
-use super::super::domain::design::{DomainDesign};
-use super::super::domain::user::{DomainUser};
+use super::super::domain::{
+    design::{DomainDesign},
+    user::{DomainUser},
+};
 
 pub struct RepositoryDesign {}
 

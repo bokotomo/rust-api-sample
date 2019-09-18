@@ -1,5 +1,7 @@
-use super::super::domain::job::{DomainJob};
-use super::super::domain::company::{DomainCompany};
+use super::super::domain::{
+    job::{DomainJob},
+    company::{DomainCompany},
+};
 pub struct RepositoryJob {}
 
 impl RepositoryJob {

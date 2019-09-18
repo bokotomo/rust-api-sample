@@ -7,7 +7,7 @@ use super::super::request::design::{RequestDesignIndex};
 use super::super::response::design::{response_design_index};
 use super::super::repository::design::{RepositoryDesign};
 
-pub fn design_index(payload: web::Json<RequestDesignIndex>) -> HttpResponse {
+pub fn design_index(payload: web::Query<RequestDesignIndex>) -> HttpResponse {
     let repository_design = RepositoryDesign::new();
     let (domain_designs, total) = &service_design_index(
         repository_design,

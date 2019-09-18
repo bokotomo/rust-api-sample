@@ -1,20 +1,22 @@
 extern crate gcs_api;
 extern crate json;
 extern crate serde_json;
-
-use gcs_api::controller::health::{health_index};
-use gcs_api::controller::design::{design_index};
-use gcs_api::controller::sample::{sample_index};
-use gcs_api::controller::user::{user_index};
-use gcs_api::controller::job::{job_index, job_show};
-
+use dotenv;
+use actix_cors::Cors;
 use actix_web::{
+    http,
     middleware,
     web,
     App,
     HttpServer,
 };
-use dotenv;
+use gcs_api::controller::{
+    health::{health_index},
+    design::{design_index},
+    sample::{sample_index},
+    user::{user_index},
+    job::{job_index, job_show},
+};
 
 fn setup() {
     std::env::set_var("RUST_LOG", "actix_web=info");
@@ -27,6 +29,13 @@ fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
+            .wrap(
+                Cors::new()
+                    .allowed_origin("http://localhost:3000")
+                    .allowed_methods(vec!["GET", "POST", "OPTIONS", "HEAD", "DELETE", "PUT"])
+                    .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT, http::header::CONTENT_TYPE])
+                    .max_age(3600),
+            )
             // ログ有効
             .wrap(middleware::Logger::default())
             // 制限

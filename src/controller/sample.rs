@@ -4,7 +4,7 @@ use actix_web::{
 };
 use super::super::request::sample::{RequestSampleIndex};
 
-pub fn sample_index(item: web::Json<RequestSampleIndex>) -> HttpResponse {
+pub fn sample_index(item: web::Query<RequestSampleIndex>) -> HttpResponse {
     println!("model: {:?}", &item);
     HttpResponse::Ok().json(item.0)
 }

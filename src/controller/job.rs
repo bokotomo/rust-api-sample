@@ -7,7 +7,7 @@ use super::super::repository::job::{RepositoryJob};
 use super::super::response::job::{response_job_index, response_job_show};
 use super::super::request::job::{RequestJobIndex};
 
-pub fn job_index(payload: web::Json<RequestJobIndex>) -> HttpResponse {
+pub fn job_index(payload: web::Query<RequestJobIndex>) -> HttpResponse {
     let repository_job = RepositoryJob::new();
     let domain_jobs = &service_job_index(
         repository_job,
@@ -17,7 +17,7 @@ pub fn job_index(payload: web::Json<RequestJobIndex>) -> HttpResponse {
     response_job_index(domain_jobs)
 }
 
-pub fn job_show(payload: web::Json<RequestJobIndex>) -> HttpResponse {
+pub fn job_show(payload: web::Query<RequestJobIndex>) -> HttpResponse {
     let repository_job = RepositoryJob::new();
     let domain_job = &service_job_show(
         repository_job,

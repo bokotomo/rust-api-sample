@@ -7,7 +7,7 @@ use super::super::repository::user::{RepositoryUser};
 use super::super::response::user::{response_user_index};
 use super::super::request::user::{RequestUserIndex};
 
-pub fn user_index(payload: web::Json<RequestUserIndex>) -> HttpResponse {
+pub fn user_index(payload: web::Query<RequestUserIndex>) -> HttpResponse {
     let repository_user = RepositoryUser::new();
     let domain_users = &service_user_index(
         repository_user,
