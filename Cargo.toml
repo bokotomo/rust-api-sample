@@ -10,6 +10,7 @@ edition = "2018"
 actix-web = "1.0"
 actix-cors = "0.1.0"
 dotenv = "0.14.1"
+diesel = { version = "1.0.0", features = ["mysql"] }
 
 bytes = "0.4"
 futures = "0.1"

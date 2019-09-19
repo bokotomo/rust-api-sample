@@ -1,6 +1,6 @@
 FROM rust:1.37-stretch
  
 ENV USER=bokotomo
-WORKDIR /src
+WORKDIR /rust-actix-web
 RUN apt-get update
 RUN apt install -y vim 

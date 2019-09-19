@@ -26,6 +26,7 @@ fn setup() {
 fn main() -> std::io::Result<()> {
     setup();
     let url = dotenv::var("HOST").unwrap().to_string() + ":" + &dotenv::var("PORT").unwrap();
+    // let url_allowed_origin = "http://localhost:3000";
 
     HttpServer::new(|| {
         App::new()

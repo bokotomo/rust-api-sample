@@ -16,3 +16,5 @@ services:
       MYSQL_USER: dev
       MYSQL_PASSWORD: dev
       MYSQL_DATABASE: dev
+    volumes:
+      - ./mysql/mysql-confd:/etc/mysql/conf.d
