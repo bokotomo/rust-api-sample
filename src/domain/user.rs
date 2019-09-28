@@ -18,7 +18,7 @@ impl DomainUser {
     pub fn id(&self) -> i32 {
         self.id
     }
-    pub fn zname(&self) -> String {
+    pub fn name(&self) -> String {
         self.name.to_string()
     }
     pub fn image(&self) -> String {
