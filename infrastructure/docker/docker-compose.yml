@@ -7,7 +7,7 @@ services:
       - ../../:/rust-actix-web
     ports:
       - 9999:80
-  mysql:
+  db:
     image: mysql:8.0.17
     ports:
       - "3399:3306"
@@ -16,5 +16,6 @@ services:
       MYSQL_USER: dev
       MYSQL_PASSWORD: dev
       MYSQL_DATABASE: dev
+      TZ: Asia/Tokyo
     volumes:
       - ./mysql/mysql-confd:/etc/mysql/conf.d

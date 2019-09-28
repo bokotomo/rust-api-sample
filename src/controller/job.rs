@@ -7,6 +7,9 @@ use super::super::repository::job::{RepositoryJob};
 use super::super::response::job::{response_job_index, response_job_show};
 use super::super::request::job::{RequestJobIndex};
 
+/// テスト
+///
+///
 pub fn job_index(payload: web::Query<RequestJobIndex>) -> HttpResponse {
     let repository_job = RepositoryJob::new();
     let domain_jobs = &service_job_index(

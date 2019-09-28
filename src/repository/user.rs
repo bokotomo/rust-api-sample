@@ -1,4 +1,4 @@
-use super::super::domain::user::{DomainUser};
+use super::super::domain::user::DomainUser;
 
 pub struct RepositoryUser {}
 
@@ -16,7 +16,7 @@ impl RepositoryUser {
                 "http://~".to_string(),
             )
         );
-        
+
         users
     }
 }

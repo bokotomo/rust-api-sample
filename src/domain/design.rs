@@ -1,12 +1,16 @@
-// デザイン情報
-use super::super::domain::user::{DomainUser};
+// デザイン一覧の情報
+use super::super::domain::user::DomainUser;
 
 pub struct DomainDesign {
     id: i32,
+    // デザインタイトル
     title: String,
+    // デザインサムネイル
     thumbnail: String,
     user: DomainUser,
+    // いいね数
     good: i32,
+    // コメント数
     comment: i32,
 }
 

@@ -3,4 +3,6 @@
 /target
 **/*.rs.bk
 
+/.idea
+
 .env

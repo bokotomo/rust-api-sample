@@ -19,6 +19,15 @@ cargo run
 curl localhost:9999/health
 ```
 
+# migration
+```
+diesel migration generate create_design
+
+diesel migration run
+
+diesel migration redo
+```
+
 ## structure
 ```
 domain

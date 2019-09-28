@@ -1,5 +1,5 @@
-use actix_web::{HttpResponse};
-use super::super::domain::design::{DomainDesign};
+use actix_web::HttpResponse;
+use super::super::domain::design::DomainDesign;
 use serde_derive::{
     Deserialize,
     Serialize,

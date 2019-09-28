@@ -1,7 +1,8 @@
 use super::super::domain::{
-    job::{DomainJob},
-    company::{DomainCompany},
+    job::DomainJob,
+    company::DomainCompany,
 };
+
 pub struct RepositoryJob {}
 
 impl RepositoryJob {
@@ -9,6 +10,7 @@ impl RepositoryJob {
         RepositoryJob {}
     }
 
+    // 仕事一覧を返す
     pub fn find_jobs(&self, page: i32, page_size: i32) -> Vec<DomainJob> {
         let mut jobs = Vec::new();
         let company = DomainCompany::new(
@@ -18,24 +20,19 @@ impl RepositoryJob {
             "http://".to_string(),
         );
         jobs.push(
-            DomainJob::new(
+            DomainJob::new_job(
                 page + page_size,
                 company,
                 "タイトル".to_string(),
                 "サブ詳細".to_string(),
                 "たぐ".to_string(),
-                "".to_string(),
-                "".to_string(),
-                "".to_string(),
-                "".to_string(),
-                "".to_string(),
-                0,
             )
         );
-        
+
         jobs
     }
 
+    // 仕事詳細を返す
     pub fn find_job(&self, page: i32, page_size: i32) -> DomainJob {
         let company = DomainCompany::new(
             1,
@@ -43,8 +40,7 @@ impl RepositoryJob {
             "http://".to_string(),
             "http://".to_string(),
         );
-
-        DomainJob::new(
+        DomainJob::new_jobs(
             page + page_size,
             company,
             "タイトル".to_string(),

@@ -1,6 +1,7 @@
 extern crate gcs_api;
 extern crate json;
 extern crate serde_json;
+
 use dotenv;
 use actix_cors::Cors;
 use actix_web::{
@@ -11,10 +12,10 @@ use actix_web::{
     HttpServer,
 };
 use gcs_api::controller::{
-    health::{health_index},
-    design::{design_index},
-    sample::{sample_index},
-    user::{user_index},
+    health::health_index,
+    design::design_index,
+    sample::sample_index,
+    user::user_index,
     job::{job_index, job_show},
 };
 
@@ -45,34 +46,34 @@ fn main() -> std::io::Result<()> {
             .service(
                 web::resource("/health")
                     .route(web::get()
-                    .to_async(health_index)),
+                        .to_async(health_index)),
             )
             .service(
                 web::resource("/sample")
                     .route(web::get()
-                    .to_async(sample_index)),
+                        .to_async(sample_index)),
             )
             .service(
                 web::resource("/designs")
                     .route(web::get()
-                    .to_async(design_index)),
+                        .to_async(design_index)),
             )
             .service(
                 web::resource("/users")
                     .route(web::get()
-                    .to_async(user_index)),
+                        .to_async(user_index)),
             )
             .service(
                 web::resource("/jobs")
                     .route(web::get()
-                    .to_async(job_index)),
+                        .to_async(job_index)),
             )
             .service(
                 web::resource("/job")
                     .route(web::get()
-                    .to_async(job_show)),
+                        .to_async(job_show)),
             )
     })
-    .bind(url)?
-    .run()
+        .bind(url)?
+        .run()
 }

@@ -1,8 +1,11 @@
-// 企業情報
+// サービス全体を通した企業
 pub struct DomainCompany {
     id: i32,
+    // 会社名
     name: String,
+    // 会社ロゴ
     logo: String,
+    // 会社サムネイル
     thumbnail: String,
 }
 

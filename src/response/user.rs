@@ -1,5 +1,5 @@
-use actix_web::{HttpResponse};
-use super::super::domain::user::{DomainUser};
+use actix_web::HttpResponse;
+use super::super::domain::user::DomainUser;
 use serde_derive::{
     Deserialize,
     Serialize,
@@ -24,6 +24,6 @@ pub fn response_user_index(domain_users: &Vec<DomainUser>) -> HttpResponse {
             comment: domain_user.id(),
         });
     }
-    
+
     HttpResponse::Ok().json(response_users)
 }
