@@ -39,13 +39,13 @@ pub fn response_job_index(domain_jobs: &Vec<DomainJob>) -> HttpResponse {
     let mut response_jobs = Vec::new();
     for domain_job in domain_jobs {
         response_jobs.push(JobIndex {
-            id: domain_job.id(),
-            company_name: domain_job.company_name(),
-            company_logo: domain_job.company_logo(),
-            company_thumbnail: domain_job.company_thumbnail(),
-            title: domain_job.title(),
-            title_sub: domain_job.title_sub(),
-            tag: domain_job.tag(),
+            id: *domain_job.id(),
+            company_name: domain_job.company_name().to_string(),
+            company_logo: domain_job.company_logo().to_string(),
+            company_thumbnail: domain_job.company_thumbnail().to_string(),
+            title: domain_job.title().to_string(),
+            title_sub: domain_job.title_sub().to_string(),
+            tag: domain_job.tag().to_string(),
         });
     }
 
@@ -54,19 +54,19 @@ pub fn response_job_index(domain_jobs: &Vec<DomainJob>) -> HttpResponse {
 
 pub fn response_job_show(domain_job: &DomainJob) -> HttpResponse {
     let response_job = JobShow {
-        id: domain_job.id(),
-        company_name: domain_job.company_name(),
-        company_logo: domain_job.company_logo(),
-        company_thumbnail: domain_job.company_thumbnail(),
-        title: domain_job.title(),
-        title_sub: domain_job.title_sub(),
-        tag: domain_job.tag(),
-        description: domain_job.description(),
-        recruiment_period: domain_job.recruitment_period(),
-        location: domain_job.location(),
-        salary: domain_job.salary(),
-        type_of_work: domain_job.type_of_work(),
-        employees: domain_job.employees(),
+        id: *domain_job.id(),
+        company_name: domain_job.company_name().to_string(),
+        company_logo: domain_job.company_logo().to_string(),
+        company_thumbnail: domain_job.company_thumbnail().to_string(),
+        title: domain_job.title().to_string(),
+        title_sub: domain_job.title_sub().to_string(),
+        tag: domain_job.tag().to_string(),
+        description: domain_job.description().to_string(),
+        recruiment_period: domain_job.recruitment_period().to_string(),
+        location: domain_job.location().to_string(),
+        salary: domain_job.salary().to_string(),
+        type_of_work: domain_job.type_of_work().to_string(),
+        employees: *domain_job.employees(),
     };
 
     HttpResponse::Ok().json(response_job)

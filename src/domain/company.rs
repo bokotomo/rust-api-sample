@@ -18,16 +18,16 @@ impl DomainCompany {
             thumbnail,
         }
     }
-    pub fn id(&self) -> i32 {
-        self.id
+    pub fn id(&self) -> &i32 {
+        &self.id
     }
-    pub fn name(&self) -> String {
-        self.name.to_string()
+    pub fn name(&self) -> &str {
+        &self.name
     }
-    pub fn logo(&self) -> String {
-        self.logo.to_string()
+    pub fn logo(&self) -> &str {
+        &self.logo
     }
-    pub fn thumbnail(&self) -> String {
-        self.thumbnail.to_string()
+    pub fn thumbnail(&self) -> &str {
+        &self.thumbnail
     }
 }

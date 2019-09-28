@@ -25,28 +25,28 @@ impl DomainDesign {
             comment,
         }
     }
-    pub fn id(&self) -> i32 {
-        self.id
+    pub fn id(&self) -> &i32 {
+        &self.id
     }
-    pub fn title(&self) -> String {
-        self.title.to_string()
+    pub fn title(&self) -> &str {
+        &self.title
     }
-    pub fn thumbnail(&self) -> String {
-        self.thumbnail.to_string()
+    pub fn thumbnail(&self) -> &str {
+        &self.thumbnail
     }
-    pub fn good(&self) -> i32 {
-        self.good
+    pub fn good(&self) -> &i32 {
+        &self.good
     }
-    pub fn comment(&self) -> i32 {
-        self.comment
+    pub fn comment(&self) -> &i32 {
+        &self.comment
     }
-    pub fn user_id(&self) -> i32 {
+    pub fn user_id(&self) -> &i32 {
         self.user.id()
     }
-    pub fn user_name(&self) -> String {
+    pub fn user_name(&self) -> &str {
         self.user.name()
     }
-    pub fn user_image(&self) -> String {
+    pub fn user_image(&self) -> &str {
         self.user.image()
     }
 }

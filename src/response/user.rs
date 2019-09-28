@@ -18,10 +18,10 @@ pub fn response_user_index(domain_users: &Vec<DomainUser>) -> HttpResponse {
     let mut response_users = Vec::new();
     for domain_user in domain_users {
         response_users.push(UserIndex {
-            id: domain_user.id(),
-            title: domain_user.name(),
-            good: domain_user.id(),
-            comment: domain_user.id(),
+            id: *domain_user.id(),
+            title: domain_user.name().to_string(),
+            good: *domain_user.id(),
+            comment: *domain_user.id(),
         });
     }
 

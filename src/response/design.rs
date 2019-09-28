@@ -32,26 +32,26 @@ pub fn response_design_index(domain_designs: &Vec<DomainDesign>, total: &i32) ->
 
     for domain_design in domain_designs {
         designs.push(Designs {
-            id: domain_design.id(),
-            thumbnail: domain_design.thumbnail(),
-            title: domain_design.title(),
-            good: domain_design.good(),
-            comment: domain_design.comment(),
-            user_id: domain_design.user_id(),
-            user_name: domain_design.user_name(),
-            user_image: domain_design.user_image(),
+            id: *domain_design.id(),
+            thumbnail: domain_design.thumbnail().to_string(),
+            title: domain_design.title().to_string(),
+            good: *domain_design.good(),
+            comment: *domain_design.comment(),
+            user_id: *domain_design.user_id(),
+            user_name: domain_design.user_name().to_string(),
+            user_image: domain_design.user_image().to_string(),
         });
     }
     for domain_design in domain_designs {
         pickups.push(Designs {
-            id: domain_design.id(),
-            thumbnail: domain_design.thumbnail(),
-            title: domain_design.title(),
-            good: domain_design.good(),
-            comment: domain_design.comment(),
-            user_id: domain_design.user_id(),
-            user_name: domain_design.user_name(),
-            user_image: domain_design.user_image(),
+            id: *domain_design.id(),
+            thumbnail: domain_design.thumbnail().to_string(),
+            title: domain_design.title().to_string(),
+            good: *domain_design.good(),
+            comment: *domain_design.comment(),
+            user_id: *domain_design.user_id(),
+            user_name: domain_design.user_name().to_string(),
+            user_image: domain_design.user_image().to_string(),
         });
     }
     let response_designs = DesignIndex {

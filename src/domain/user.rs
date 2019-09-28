@@ -15,13 +15,13 @@ impl DomainUser {
             image,
         }
     }
-    pub fn id(&self) -> i32 {
-        self.id
+    pub fn id(&self) -> &i32 {
+        &self.id
     }
-    pub fn name(&self) -> String {
-        self.name.to_string()
+    pub fn name(&self) -> &str {
+        &self.name
     }
-    pub fn image(&self) -> String {
-        self.image.to_string()
+    pub fn image(&self) -> &str {
+        &self.image
     }
 }
