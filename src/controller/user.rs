@@ -4,7 +4,10 @@ use actix_web::{
 };
 use super::super::service::user::{service_user_index, service_user_show};
 use super::super::repository::user::RepositoryUser;
-use super::super::response::user::{response_user_index, response_user_show};
+use super::super::response::{
+    user_index::response_user_index,
+    user_show::response_user_show,
+};
 use super::super::request::user::{RequestUserIndex, RequestUserShow};
 
 pub fn user_index(payload: web::Query<RequestUserIndex>) -> HttpResponse {

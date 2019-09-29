@@ -24,6 +24,7 @@ impl RepositoryDesign {
         page_size * 2
     }
 
+    // ピックアップデザイン一覧
     pub fn find_pickups(&self) -> Vec<DomainDesign> {
         let mut pickups = Vec::new();
         for i in 0..4 {
@@ -47,6 +48,7 @@ impl RepositoryDesign {
         pickups
     }
 
+    // デザイン一覧
     pub fn find_designs(&self, page: i32, page_size: i32) -> Vec<DomainDesign> {
         // establish_connection();
         // let results = design.filter(title.eq("OK"))
@@ -82,6 +84,7 @@ impl RepositoryDesign {
         designs
     }
 
+    // デザイナー一覧
     pub fn find_designers(&self, page: i32, page_size: i32) -> Vec<DomainDesigner> {
         let mut designers = Vec::new();
 

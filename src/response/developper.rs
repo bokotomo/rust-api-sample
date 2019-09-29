@@ -25,7 +25,7 @@ struct DevelopperIndex {
 }
 
 pub fn response_developper_index(domain_developpers: &Vec<DomainDevelopper>, total: &i32) -> HttpResponse {
-    let mut developpers = Vec::new();
+    let mut developpers = Vec::with_capacity(domain_developpers.len());
     for domain_developper in domain_developpers {
         developpers.push(Developper {
             id: *domain_developper.id(),

@@ -36,7 +36,7 @@ struct JobShow {
 }
 
 pub fn response_job_index(domain_jobs: &Vec<DomainJob>) -> HttpResponse {
-    let mut response_jobs = Vec::new();
+    let mut response_jobs = Vec::with_capacity(domain_jobs.len());
     for domain_job in domain_jobs {
         response_jobs.push(JobIndex {
             id: *domain_job.id(),

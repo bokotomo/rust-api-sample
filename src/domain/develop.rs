@@ -1,4 +1,4 @@
-// デザイン一覧の情報
+// 開発物一覧の情報
 use super::super::domain::user::DomainUser;
 
 pub struct DomainDevelop {
