@@ -6,7 +6,7 @@ pub fn service_job_index(repository_job: RepositoryJob, page: i32, page_size: i3
     domain_jobs
 }
 
-pub fn service_job_show(repository_job: RepositoryJob, page: i32, page_size: i32) -> DomainJob {
-    let domain_job = repository_job.find_job(page, page_size);
+pub fn service_job_show(repository_job: RepositoryJob, job_id: i32) -> DomainJob {
+    let domain_job = repository_job.find_job(job_id);
     domain_job
 }

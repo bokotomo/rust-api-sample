@@ -13,7 +13,7 @@ use actix_web::{
 };
 use gcs_api::controller::{
     health::health_index,
-    design::design_index,
+    design::{design_index, pickup_index},
     sample::sample_index,
     user::user_index,
     job::{job_index, job_show},
@@ -57,6 +57,11 @@ fn main() -> std::io::Result<()> {
                 web::resource("/designs")
                     .route(web::get()
                         .to_async(design_index)),
+            )
+            .service(
+                web::resource("/pickups")
+                    .route(web::get()
+                        .to_async(pickup_index)),
             )
             .service(
                 web::resource("/users")

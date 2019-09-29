@@ -25,7 +25,7 @@ pub struct DomainJob {
 }
 
 impl DomainJob {
-    pub fn new_jobs(id: i32, company: DomainCompany, title: String, title_sub: String, tag: String, description: String, recruiment_period: String, location: String, salary: String, type_of_work: String, employees: i32) -> DomainJob {
+    pub fn new_job(id: i32, company: DomainCompany, title: String, title_sub: String, tag: String, description: String, recruiment_period: String, location: String, salary: String, type_of_work: String, employees: i32) -> DomainJob {
         DomainJob {
             id,
             company,
@@ -40,7 +40,7 @@ impl DomainJob {
             employees,
         }
     }
-    pub fn new_job(id: i32, company: DomainCompany, title: String, title_sub: String, tag: String) -> DomainJob {
+    pub fn new_jobs(id: i32, company: DomainCompany, title: String, title_sub: String, tag: String) -> DomainJob {
         DomainJob {
             id,
             company,

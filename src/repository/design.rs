@@ -20,6 +20,29 @@ impl RepositoryDesign {
         page_size * 2
     }
 
+    pub fn find_pickups(&self) -> Vec<DomainDesign> {
+        let mut pickups = Vec::new();
+        for i in 0..4 {
+            let user = DomainUser::new(
+                i,
+                "a太郎".to_string(),
+                "http://localhost:3000/images/user2.png".to_string(),
+            );
+            pickups.push(
+                DomainDesign::new(
+                    i,
+                    "タイトル".to_string(),
+                    "http://localhost:3000/images/content2.jpg".to_string(),
+                    user,
+                    1,
+                    12,
+                )
+            );
+        }
+
+        pickups
+    }
+
     pub fn find_designs(&self, page: i32, page_size: i32) -> Vec<DomainDesign> {
         // establish_connection();
         // let results = design.filter(title.eq("OK"))
@@ -34,21 +57,23 @@ impl RepositoryDesign {
         // }
 
         let mut designs = Vec::new();
-        let user = DomainUser::new(
-            1,
-            "a太郎".to_string(),
-            "http://~".to_string(),
-        );
-        designs.push(
-            DomainDesign::new(
-                1,
-                "タイトル".to_string(),
-                "http://thumb".to_string(),
-                user,
-                page,
-                page_size,
-            )
-        );
+        for i in 0..10 {
+            let user = DomainUser::new(
+                i,
+                "a太郎".to_string(),
+                "http://localhost:3000/images/user1.jpg".to_string(),
+            );
+            designs.push(
+                DomainDesign::new(
+                    i,
+                    "タイトル".to_string(),
+                    "http://localhost:3000/images/content1.jpg".to_string(),
+                    user,
+                    page,
+                    page_size,
+                )
+            );
+        }
 
         designs
     }
