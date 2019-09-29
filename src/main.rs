@@ -70,7 +70,7 @@ fn main() -> std::io::Result<()> {
                         .to_async(user_index)),
             )
             .service(
-                web::resource("/desingers")
+                web::resource("/desinger")
                     .route(web::get()
                         .to_async(desinger_index)),
             )

@@ -1,4 +1,4 @@
-use super::super::domain::develop::DomainDevelopper;
+use super::super::domain::developper::DomainDevelopper;
 use super::super::repository::develop::RepositoryDevelop;
 
 pub fn service_developper_index(repository_develop: RepositoryDevelop, page: i32, page_size: i32) -> (Vec<DomainDevelopper>, i32) {

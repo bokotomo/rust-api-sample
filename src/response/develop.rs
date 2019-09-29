@@ -1,5 +1,5 @@
 use actix_web::HttpResponse;
-use super::super::domain::develop::DomainDevelopper;
+use super::super::domain::developper::DomainDevelopper;
 use serde_derive::{
     Deserialize,
     Serialize,
@@ -9,7 +9,8 @@ use serde_derive::{
 #[serde(rename_all = "camelCase")]
 struct Developper {
     id: i32,
-    title: String,
+    good_total: i32,
+    post_images: String,
     user_id: i32,
     user_name: String,
     user_image: String,
@@ -27,7 +28,8 @@ pub fn response_developper_index(domain_developpers: &Vec<DomainDevelopper>, tot
     for domain_developper in domain_developpers {
         developpers.push(Developper {
             id: *domain_developper.id(),
-            title: domain_developper.title().to_string(),
+            post_images: domain_developper.post_images().to_string(),
+            good_total: *domain_developper.good_total(),
             user_id: *domain_developper.user_id(),
             user_name: domain_developper.user_name().to_string(),
             user_image: domain_developper.user_image().to_string(),

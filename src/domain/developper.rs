@@ -1,26 +1,32 @@
 // デザイン一覧の情報
 use super::super::domain::user::DomainUser;
 
-pub struct DomainDevelop {
+pub struct DomainDevelopper {
     id: i32,
     // デザインタイトル
-    title: String,
+    post_images: String,
     user: DomainUser,
+    // いいね総数
+    good_total: i32,
 }
 
-impl DomainDevelop {
-    pub fn new(id: i32, title: String, thumbnail: String, user: DomainUser, good: i32, comment: i32) -> DomainDevelop {
-        DomainDevelop {
+impl DomainDevelopper {
+    pub fn new(id: i32, post_images: String, user: DomainUser, good_total: i32) -> DomainDevelopper {
+        DomainDevelopper {
             id,
-            title,
+            post_images,
             user,
+            good_total,
         }
     }
     pub fn id(&self) -> &i32 {
         &self.id
     }
-    pub fn title(&self) -> &str {
-        &self.title
+    pub fn post_images(&self) -> &str {
+        &self.post_images
+    }
+    pub fn good_total(&self) -> &i32 {
+        &self.good_total
     }
     pub fn user_id(&self) -> &i32 {
         self.user.id()

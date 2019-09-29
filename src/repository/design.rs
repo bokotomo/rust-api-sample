@@ -1,5 +1,6 @@
 use super::super::domain::{
     design::DomainDesign,
+    designer::DomainDesigner,
     user::DomainUser,
 };
 // use super::super::driver::db::establish_connection;
@@ -17,6 +18,10 @@ impl RepositoryDesign {
     }
 
     pub fn find_designs_total(&self, page_size: i32) -> i32 {
+        page_size * 2
+    }
+
+    pub fn find_designers_total(&self, page_size: i32) -> i32 {
         page_size * 2
     }
 
@@ -76,5 +81,28 @@ impl RepositoryDesign {
         }
 
         designs
+    }
+
+    pub fn find_designers(&self, page: i32, page_size: i32) -> Vec<DomainDesigner> {
+        let mut designers = Vec::new();
+
+        for i in 0..4 {
+            let post_images = "http://localhost:3000/images/content2.jpg".to_string();
+            let user = DomainUser::new(
+                i,
+                "a太郎".to_string(),
+                "http://localhost:3000/images/user2.png".to_string(),
+            );
+            designers.push(
+                DomainDesigner::new(
+                    i,
+                    post_images,
+                    user,
+                    page*page_size,
+                )
+            );
+        }
+
+        designers
     }
 }
