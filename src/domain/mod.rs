@@ -1,5 +1,8 @@
 pub mod job;
 pub mod user;
+pub mod user_creation;
+pub mod user_article;
+pub mod user_experience;
 pub mod company;
 pub mod design;
 pub mod designer;

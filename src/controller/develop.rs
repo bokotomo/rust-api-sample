@@ -3,8 +3,8 @@ use actix_web::{
     web,
 };
 use super::super::service::develop::service_developper_index;
-use super::super::request::develop::RequestDevelopperIndex;
-use super::super::response::develop::response_developper_index;
+use super::super::request::developper::RequestDevelopperIndex;
+use super::super::response::developper::response_developper_index;
 use super::super::repository::develop::RepositoryDevelop;
 
 pub fn developper_index(payload: web::Query<RequestDevelopperIndex>) -> HttpResponse {

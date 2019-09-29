@@ -16,7 +16,7 @@ use gcs_api::controller::{
     design::{design_index, pickup_index, desinger_index},
     develop::{developper_index},
     sample::sample_index,
-    user::user_index,
+    user::{user_index, user_show},
     job::{job_index, job_show},
 };
 
@@ -70,7 +70,12 @@ fn main() -> std::io::Result<()> {
                         .to_async(user_index)),
             )
             .service(
-                web::resource("/desinger")
+                web::resource("/user")
+                    .route(web::get()
+                        .to_async(user_show)),
+            )
+            .service(
+                web::resource("/designer")
                     .route(web::get()
                         .to_async(desinger_index)),
             )

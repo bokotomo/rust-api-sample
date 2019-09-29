@@ -4,29 +4,26 @@ use super::super::domain::user::DomainUser;
 pub struct DomainDevelopper {
     id: i32,
     // デザインタイトル
-    post_images: String,
+    post_images: Vec<String>,
     user: DomainUser,
-    // いいね総数
-    good_total: i32,
 }
 
 impl DomainDevelopper {
-    pub fn new(id: i32, post_images: String, user: DomainUser, good_total: i32) -> DomainDevelopper {
+    pub fn new(id: i32, post_images: Vec<String>, user: DomainUser) -> DomainDevelopper {
         DomainDevelopper {
             id,
             post_images,
             user,
-            good_total,
         }
     }
     pub fn id(&self) -> &i32 {
         &self.id
     }
-    pub fn post_images(&self) -> &str {
+    pub fn post_images(&self) -> &Vec<String> {
         &self.post_images
     }
-    pub fn good_total(&self) -> &i32 {
-        &self.good_total
+    pub fn user_good_total(&self) -> &i32 {
+        self.user.good_total()
     }
     pub fn user_id(&self) -> &i32 {
         self.user.id()
@@ -36,5 +33,8 @@ impl DomainDevelopper {
     }
     pub fn user_image(&self) -> &str {
         self.user.image()
+    }
+    pub fn user_location(&self) -> &str {
+        self.user.location()
     }
 }

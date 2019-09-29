@@ -1,8 +1,8 @@
 extern crate diesel;
 
 use diesel::prelude::*;
-use dotenv::dotenv;
-use std::env;
+//use dotenv::dotenv;
+//use std::env;
 use super::super::model::design::NewDesign;
 use super::super::schema::design;
 

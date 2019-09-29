@@ -3,8 +3,12 @@ use actix_web::{
     web,
 };
 use super::super::service::design::{service_design_index, service_pickup_index, service_designer_index};
-use super::super::request::design::{RequestDesignIndex, RequestDesignerIndex};
-use super::super::response::design::{response_design_index, response_pickup_index, response_designer_index};
+use super::super::request::{
+    design::RequestDesignIndex,
+    designer::RequestDesignerIndex,
+};
+use super::super::response::design::{response_design_index, response_pickup_index};
+use super::super::response::designer::response_designer_index;
 use super::super::repository::design::RepositoryDesign;
 
 pub fn design_index(payload: web::Query<RequestDesignIndex>) -> HttpResponse {

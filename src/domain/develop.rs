@@ -3,13 +3,13 @@ use super::super::domain::user::DomainUser;
 
 pub struct DomainDevelop {
     id: i32,
-    // デザインタイトル
+    // 開発物タイトル
     title: String,
     user: DomainUser,
 }
 
 impl DomainDevelop {
-    pub fn new(id: i32, title: String, thumbnail: String, user: DomainUser, good: i32, comment: i32) -> DomainDevelop {
+    pub fn new(id: i32, title: String, user: DomainUser) -> DomainDevelop {
         DomainDevelop {
             id,
             title,

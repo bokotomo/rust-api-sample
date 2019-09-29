@@ -5,10 +5,9 @@ use super::super::domain::{
 };
 // use super::super::driver::db::establish_connection;
 // use super::super::driver::db::CONNECTION_MYSQL;
-use super::super::schema::design::dsl::*;
-use super::super::model::design::Design;
-
-use diesel::prelude::*;
+//use super::super::schema::design::dsl::*;
+//use super::super::model::design::Design;
+//use diesel::prelude::*;
 
 pub struct RepositoryDesign {}
 
@@ -86,11 +85,16 @@ impl RepositoryDesign {
     pub fn find_designers(&self, page: i32, page_size: i32) -> Vec<DomainDesigner> {
         let mut designers = Vec::new();
 
-        for i in 0..4 {
-            let post_images = "http://localhost:3000/images/content2.jpg".to_string();
+        for i in 0..page * page_size {
+            let mut post_images = Vec::new();
+            post_images.push("http://localhost:3000/images/content2.jpg".to_string());
+            post_images.push("http://localhost:3000/images/content2.jpg".to_string());
+            post_images.push("http://localhost:3000/images/content1.jpg".to_string());
+            post_images.push("http://localhost:3000/images/content1.jpg".to_string());
+
             let user = DomainUser::new(
                 i,
-                "a太郎".to_string(),
+                "デザイナー太郎".to_string(),
                 "http://localhost:3000/images/user2.png".to_string(),
             );
             designers.push(
@@ -98,7 +102,6 @@ impl RepositoryDesign {
                     i,
                     post_images,
                     user,
-                    page*page_size,
                 )
             );
         }

@@ -49,4 +49,7 @@ impl DomainDesign {
     pub fn user_image(&self) -> &str {
         self.user.image()
     }
+    pub fn user_location(&self) -> &str {
+        self.user.image()
+    }
 }
