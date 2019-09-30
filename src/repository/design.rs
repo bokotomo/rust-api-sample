@@ -97,7 +97,7 @@ impl RepositoryDesign {
 
             let user = DomainUser::new(
                 i,
-                "デザイナー太郎".to_string(),
+                format!("{} - {}", "デザイナー二郎".to_string(), i),
                 "http://localhost:3000/images/user2.png".to_string(),
             );
             designers.push(

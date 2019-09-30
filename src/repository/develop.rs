@@ -26,7 +26,7 @@ impl RepositoryDevelop {
 
             let user = DomainUser::new(
                 i,
-                "エンジニア太郎".to_string(),
+                format!("{} - {}", "エンジニア太郎".to_string(), i),
                 "http://localhost:3000/images/user1.jpg".to_string(),
             );
             developpers.push(

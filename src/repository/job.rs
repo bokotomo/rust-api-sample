@@ -16,7 +16,7 @@ impl RepositoryJob {
         for i in 0..5 {
             let company = DomainCompany::new(
                 i,
-                "株式会社feroiav Games".to_string(),
+                format!("{} - {}", "株式会社feroiav Games".to_string(), i),
                 "http://localhost:3000/images/logo1.jpg".to_string(),
                 "http://localhost:3000/images/company_back1.jpg".to_string(),
             );
