@@ -1,8 +1,10 @@
-pub mod job;
+pub mod health;
+pub mod job_index;
+pub mod job_show;
 pub mod user_index;
 pub mod user_show;
-pub mod health;
-pub mod design;
-pub mod designer;
-pub mod develop;
-pub mod developper;
+pub mod design_index;
+pub mod pickup_index;
+pub mod designer_index;
+pub mod develop_index;
+pub mod developper_index;

@@ -14,7 +14,6 @@ struct Developper {
     user_id: i32,
     user_name: String,
     user_image: String,
-    user_location: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -34,13 +33,11 @@ pub fn response_developper_index(domain_developpers: &Vec<DomainDevelopper>, tot
             user_id: *domain_developper.user_id(),
             user_name: domain_developper.user_name().to_string(),
             user_image: domain_developper.user_image().to_string(),
-            user_location: domain_developper.user_location().to_string(),
         });
     }
-    let response_developpers = DevelopperIndex {
+
+    HttpResponse::Ok().json(DevelopperIndex {
         total: *total,
         developpers,
-    };
-
-    HttpResponse::Ok().json(response_developpers)
+    })
 }

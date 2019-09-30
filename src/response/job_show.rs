@@ -7,19 +7,7 @@ use serde_derive::{
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-struct JobIndex {
-    id: i32,
-    company_name: String,
-    company_logo: String,
-    company_thumbnail: String,
-    title: String,
-    title_sub: String,
-    tag: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-struct JobShow {
+struct Job {
     id: i32,
     company_name: String,
     company_logo: String,
@@ -35,25 +23,14 @@ struct JobShow {
     employees: i32,
 }
 
-pub fn response_job_index(domain_jobs: &Vec<DomainJob>) -> HttpResponse {
-    let mut response_jobs = Vec::with_capacity(domain_jobs.len());
-    for domain_job in domain_jobs {
-        response_jobs.push(JobIndex {
-            id: *domain_job.id(),
-            company_name: domain_job.company_name().to_string(),
-            company_logo: domain_job.company_logo().to_string(),
-            company_thumbnail: domain_job.company_thumbnail().to_string(),
-            title: domain_job.title().to_string(),
-            title_sub: domain_job.title_sub().to_string(),
-            tag: domain_job.tag().to_string(),
-        });
-    }
-
-    HttpResponse::Ok().json(response_jobs)
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+struct JobShow {
+    job: Job,
 }
 
 pub fn response_job_show(domain_job: &DomainJob) -> HttpResponse {
-    let response_job = JobShow {
+    let job = Job {
         id: *domain_job.id(),
         company_name: domain_job.company_name().to_string(),
         company_logo: domain_job.company_logo().to_string(),
@@ -69,5 +46,7 @@ pub fn response_job_show(domain_job: &DomainJob) -> HttpResponse {
         employees: *domain_job.employees(),
     };
 
-    HttpResponse::Ok().json(response_job)
+    HttpResponse::Ok().json(JobShow {
+        job,
+    })
 }

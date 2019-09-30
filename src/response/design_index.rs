@@ -25,12 +25,6 @@ struct DesignIndex {
     designs: Vec<Designs>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
-#[serde(rename_all = "camelCase")]
-struct PickupIndex {
-    pickups: Vec<Designs>,
-}
-
 pub fn response_design_index(domain_designs: &Vec<DomainDesign>, total: &i32) -> HttpResponse {
     let mut designs = Vec::with_capacity(domain_designs.len());
 
@@ -50,25 +44,5 @@ pub fn response_design_index(domain_designs: &Vec<DomainDesign>, total: &i32) ->
     HttpResponse::Ok().json( DesignIndex {
         total: *total,
         designs,
-    })
-}
-
-pub fn response_pickup_index(domain_designs: &Vec<DomainDesign>) -> HttpResponse {
-    let mut pickups = Vec::with_capacity(domain_designs.len());
-    for domain_design in domain_designs {
-        pickups.push(Designs {
-            id: *domain_design.id(),
-            thumbnail: domain_design.thumbnail().to_string(),
-            title: domain_design.title().to_string(),
-            good: *domain_design.good(),
-            comment: *domain_design.comment(),
-            user_id: *domain_design.user_id(),
-            user_name: domain_design.user_name().to_string(),
-            user_image: domain_design.user_image().to_string(),
-        });
-    }
-
-    HttpResponse::Ok().json(PickupIndex {
-        pickups,
     })
 }

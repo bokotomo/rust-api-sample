@@ -38,10 +38,9 @@ pub fn response_designer_index(domain_designers: &Vec<DomainDesigner>, total: &i
             user_location: domain_designer.user_location().to_string(),
         });
     }
-    let response_designers = DesignerIndex {
+
+    HttpResponse::Ok().json(DesignerIndex {
         total: *total,
         designers,
-    };
-
-    HttpResponse::Ok().json(response_designers)
+    })
 }

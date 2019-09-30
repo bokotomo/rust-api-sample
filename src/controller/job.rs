@@ -4,7 +4,10 @@ use actix_web::{
 };
 use super::super::service::job::{service_job_index, service_job_show};
 use super::super::repository::job::RepositoryJob;
-use super::super::response::job::{response_job_index, response_job_show};
+use super::super::response::{
+    job_index::response_job_index,
+    job_show::response_job_show,
+};
 use super::super::request::job::{RequestJobIndex, RequestJobShow};
 
 pub fn job_index(payload: web::Query<RequestJobIndex>) -> HttpResponse {

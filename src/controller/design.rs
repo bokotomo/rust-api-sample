@@ -7,8 +7,11 @@ use super::super::request::{
     design::RequestDesignIndex,
     designer::RequestDesignerIndex,
 };
-use super::super::response::design::{response_design_index, response_pickup_index};
-use super::super::response::designer::response_designer_index;
+use super::super::response::{
+    design_index::response_design_index,
+    pickup_index::response_pickup_index,
+    designer_index::response_designer_index,
+};
 use super::super::repository::design::RepositoryDesign;
 
 pub fn design_index(payload: web::Query<RequestDesignIndex>) -> HttpResponse {
