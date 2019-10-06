@@ -1,8 +1,9 @@
 .DS_Store
-
+.env
+# main
 /target
 **/*.rs.bk
-
-/.idea
-
-.env
+# e2e
+__pycache__/
+.pytest_cache/
+.Python
