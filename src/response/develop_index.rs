@@ -1,5 +1,5 @@
 use actix_web::HttpResponse;
-use super::super::domain::developper::DomainDevelopper;
+use super::super::domain::develop::DomainDevelop;
 use serde_derive::{
     Deserialize,
     Serialize,
@@ -7,37 +7,55 @@ use serde_derive::{
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-struct Developper {
+struct Develop {
     id: i32,
-    good_total: i32,
-    post_images: Vec<String>,
-    user_id: i32,
+    title: String,
+    sub_title: String,
+    thumbnail: String,
+    good: i32,
+    comment: i32,
     user_name: String,
     user_image: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-struct DevelopperIndex {
-    total: i32,
-    developpers: Vec<Developper>,
+struct DevelopIndex {
+    trends: Vec<Develop>,
+    popularities: Vec<Develop>,
 }
 
-pub fn response_developper_index(domain_developpers: &Vec<DomainDevelopper>, total: &i32) -> HttpResponse {
-    let mut developpers = Vec::with_capacity(domain_developpers.len());
-    for domain_developper in domain_developpers {
-        developpers.push(Developper {
-            id: *domain_developper.id(),
-            post_images: domain_developper.post_images().to_vec(),
-            good_total: *domain_developper.user_good_total(),
-            user_id: *domain_developper.user_id(),
-            user_name: domain_developper.user_name().to_string(),
-            user_image: domain_developper.user_image().to_string(),
+pub fn response_develop_index(domain_develop_trends: &Vec<DomainDevelop>, domain_develop_popularities: &Vec<DomainDevelop>) -> HttpResponse {
+    let mut trends = Vec::with_capacity(domain_develop_trends.len());
+    for domain_trend in domain_develop_trends {
+        trends.push(Develop {
+            id: *domain_trend.id(),
+            title: domain_trend.title().to_string(),
+            sub_title: domain_trend.sub_title().to_string(),
+            thumbnail: domain_trend.title().to_string(),
+            good: *domain_trend.good(),
+            comment: *domain_trend.comment(),
+            user_name: domain_trend.user_name().to_string(),
+            user_image: domain_trend.user_image().to_string(),
         });
     }
 
-    HttpResponse::Ok().json(DevelopperIndex {
-        total: *total,
-        developpers,
+    let mut popularities = Vec::with_capacity(domain_develop_popularities.len());
+    for domain_popularity in domain_develop_popularities {
+        popularities.push(Develop {
+            id: *domain_popularity.id(),
+            title: domain_popularity.title().to_string(),
+            sub_title: domain_popularity.sub_title().to_string(),
+            thumbnail: domain_popularity.title().to_string(),
+            good: *domain_popularity.good(),
+            comment: *domain_popularity.comment(),
+            user_name: domain_popularity.user_name().to_string(),
+            user_image: domain_popularity.user_image().to_string(),
+        });
+    }
+
+    HttpResponse::Ok().json(DevelopIndex {
+        trends,
+        popularities,
     })
 }
