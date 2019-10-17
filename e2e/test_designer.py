@@ -1,25 +1,27 @@
 import pytest
-from helper.query import desiger_add
 import requests
-from config import host
+from e2e.config import host
+from e2e.driver.mysql import db
 
 
-@pytest.fixture(scope='function', autouse=True)
-def setup():
-    print("setupDB")
+class TestDesigner():
+    @pytest.fixture(scope='function', autouse=True)
+    def setup(self):
+        print("trancate db")
+        yield
+        print("tear down")
 
+    def test_index(self):
+        db.table('test').insert(id=4, name='212112')
 
-def test_desiger_index():
-    url = host + "designer"
-    params = {
-        "page": 1,
-        "page_size": 11,
-    }
-    r = requests.get(url, params)
-    r.encoding = 'utf-8'
-    designer = r.json()
+        url = host + "designer"
+        params = {
+            "page": 1,
+            "page_size": 11,
+        }
+        r = requests.get(url, params)
+        r.encoding = 'utf-8'
+        designer = r.json()
 
-    desiger_add(id=1, name="Ok")
-
-    assert r.status_code == 200
-    assert False
+        assert r.status_code == 200
+        assert designer["designers"][0]["id"] == 0

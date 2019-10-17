@@ -1,8 +1,12 @@
+# basic
 .DS_Store
 .env
+.idea/
+
 # main
 /target
 **/*.rs.bk
+
 # e2e
 __pycache__/
 .pytest_cache/

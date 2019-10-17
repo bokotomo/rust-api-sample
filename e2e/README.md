@@ -10,3 +10,6 @@ cargo run
 cd ./e2e
 pytest
 ```
+
+## query builder doc
+https://github.com/sdispater/orator#configuration

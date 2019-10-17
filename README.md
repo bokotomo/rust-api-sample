@@ -31,10 +31,10 @@ diesel migration redo
 ## structure
 ```
 domain
-=> API上でのデータ定義をし、受け渡しをする。
+=> API上でのデータ定義をし、そのデータを完全に扱う。
 
 controller
-=> サービスを実行し、ドメインをレスポンスへ渡す。
+=> サービスを実行し、受け取ったドメインをレスポンスへ渡す。
 
 service
 => repositoryを通してドメインを取得し、整形する。
@@ -43,11 +43,23 @@ repository
 => DBの操作を行い、ドメインを返す。
 
 response
-=> ドメインからAPIレスポンスを生成する。
+=> 「controllerから受け取ったドメイン」からAPIレスポンスを生成する。
 
 request
 => APIへのリクエストパラメータを管理する。
 
+driver
+=> API外部との接続をする。
+
+model
+=> ORMのためのテーブル定義を管理。
+
 tests
 => 単体テストする。
+
+infrastructure
+=> 環境依存のものを管理。
+
+e2e
+=> end to endテストを行う。型あり言語でなくpythonで記述。
 ```

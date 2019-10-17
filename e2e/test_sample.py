@@ -1,6 +1,6 @@
 import pytest
 import requests
-from config import host
+from e2e.config import host
 
 
 def test_health():

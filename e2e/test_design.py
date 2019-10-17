@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 import pytest
 import requests
-from config import host
+from e2e.config import host
+from e2e.driver.mysql import db
 
 
 @pytest.fixture(scope="function", autouse=True)
 def setup():
     print("setupDB")
 
+def test_design():
+    tests = db.table('test').get()
+    for v in tests:
+        print(v)
+    assert False
 
 def test_designs():
     url = host + "designs"
