@@ -25,7 +25,7 @@ struct DevelopIndex {
     popularities: Vec<Develop>,
 }
 
-pub fn response_develop_index(domain_develop_trends: &Vec<DomainDevelop>, domain_develop_popularities: &Vec<DomainDevelop>) -> HttpResponse {
+pub fn response(domain_develop_trends: &Vec<DomainDevelop>, domain_develop_popularities: &Vec<DomainDevelop>) -> HttpResponse {
     let mut trends = Vec::with_capacity(domain_develop_trends.len());
     for domain_trend in domain_develop_trends {
         trends.push(Develop {

@@ -4,12 +4,12 @@ use serde_derive::{
 };
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestJobIndex {
+pub struct Index {
     pub page: i32,
     pub page_size: i32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestJobShow{
+pub struct Show{
     pub job_id: i32,
 }

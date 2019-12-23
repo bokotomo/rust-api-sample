@@ -10,7 +10,7 @@ struct ResponseHealth {
     message: String,
 }
 
-pub fn response_health() -> HttpResponse {
+pub fn response() -> HttpResponse {
     let response_health = ResponseHealth {
         message: "Success!".to_string(),
     };

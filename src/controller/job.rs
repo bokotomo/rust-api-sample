@@ -2,29 +2,28 @@ use actix_web::{
     HttpResponse,
     web,
 };
-use super::super::service::job::{service_job_index, service_job_show};
-use super::super::repository::job::RepositoryJob;
-use super::super::response::{
-    job_index::response_job_index,
-    job_show::response_job_show,
+use super::super::{
+    service,
+    repository,
+    response,
+    request,
 };
-use super::super::request::job::{RequestJobIndex, RequestJobShow};
 
-pub fn job_index(payload: web::Query<RequestJobIndex>) -> HttpResponse {
-    let repository_job = RepositoryJob::new();
-    let domain_jobs = &service_job_index(
+pub fn job_index(payload: web::Query<request::job::Index>) -> HttpResponse {
+    let repository_job = repository::job::RepositoryJob::new();
+    let domain_jobs = &service::job::index(
         repository_job,
         payload.page,
         payload.page_size,
     );
-    response_job_index(domain_jobs)
+    response::job_index::response(domain_jobs)
 }
 
-pub fn job_show(payload: web::Query<RequestJobShow>) -> HttpResponse {
-    let repository_job = RepositoryJob::new();
-    let domain_job = &service_job_show(
+pub fn job_show(payload: web::Query<request::job::Show>) -> HttpResponse {
+    let repository_job = repository::job::RepositoryJob::new();
+    let domain_job = &service::job::show(
         repository_job,
         payload.job_id,
     );
-    response_job_show(domain_job)
+    response::job_show::response(domain_job)
 }

@@ -23,7 +23,7 @@ struct JobIndex {
     jobs: Vec<Job>,
 }
 
-pub fn response_job_index(domain_jobs: &Vec<DomainJob>) -> HttpResponse {
+pub fn response(domain_jobs: &Vec<DomainJob>) -> HttpResponse {
     let mut jobs = Vec::with_capacity(domain_jobs.len());
     for domain_job in domain_jobs {
         jobs.push(Job {

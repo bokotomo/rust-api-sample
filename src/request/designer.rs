@@ -4,7 +4,7 @@ use serde_derive::{
 };
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct RequestDesignerIndex {
+pub struct Index {
     pub page: i32,
     pub page_size: i32,
 }

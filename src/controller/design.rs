@@ -9,8 +9,8 @@ use super::super::{
     repository
 };
 
-pub fn design_index(payload: web::Query<request::design::RequestDesignIndex>) -> HttpResponse {
-    let (domain_designs, total) = &service::design::service_design_index(
+pub fn design_index(payload: web::Query<request::design::Index>) -> HttpResponse {
+    let (domain_designs, total) = &service::design::index(
         payload.page,
         payload.page_size,
     );
@@ -19,16 +19,8 @@ pub fn design_index(payload: web::Query<request::design::RequestDesignIndex>) ->
 
 pub fn pickup_index() -> HttpResponse {
     let repository_design = repository::design::RepositoryDesign::new();
-    let domain_designs = &service::design::service_pickup_index(
+    let domain_designs = &service::pickup::index(
         repository_design,
     );
     response::pickup_index::response(domain_designs)
-}
-
-pub fn desinger_index(payload: web::Query<request::designer::RequestDesignerIndex>) -> HttpResponse {
-    let (domain_designer, total) = &service::design::service_designer_index(
-        payload.page,
-        payload.page_size,
-    );
-    response::designer_index::response(domain_designer, &total)
 }

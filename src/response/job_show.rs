@@ -29,7 +29,7 @@ struct JobShow {
     job: Job,
 }
 
-pub fn response_job_show(domain_job: &DomainJob) -> HttpResponse {
+pub fn response(domain_job: &DomainJob) -> HttpResponse {
     let job = Job {
         id: *domain_job.id(),
         company_name: domain_job.company_name().to_string(),

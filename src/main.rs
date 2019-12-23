@@ -13,8 +13,10 @@ use actix_web::{
 };
 use gcs_api::controller::{
     health::health_index,
-    design::{design_index, pickup_index, desinger_index},
-    develop::{developper_index, develop_index},
+    design::{design_index, pickup_index},
+    develop::{develop_index},
+    designer::{desinger_index},
+    developper::{developper_index},
     sample::sample_index,
     user::{user_index, user_show},
     job::{job_index, job_show},

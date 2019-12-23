@@ -1,6 +1,6 @@
 use actix_web::HttpResponse;
-use super::super::response::health::response_health;
+use super::super::response;
 
 pub fn health_index() -> HttpResponse {
-    response_health()
+    response::health::response()
 }

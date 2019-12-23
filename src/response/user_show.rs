@@ -52,7 +52,7 @@ struct Experience {
     description: String,
 }
 
-pub fn response_user_show(domain_user: &DomainUser) -> HttpResponse {
+pub fn response(domain_user: &DomainUser) -> HttpResponse {
     let mut creations = Vec::with_capacity(domain_user.creations().len());
     let mut articles = Vec::with_capacity(domain_user.articles().len());
     let mut experiences = Vec::with_capacity(domain_user.experiences().len());

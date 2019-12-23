@@ -2,29 +2,28 @@ use actix_web::{
     HttpResponse,
     web,
 };
-use super::super::service::user::{service_user_index, service_user_show};
-use super::super::repository::user::RepositoryUser;
-use super::super::response::{
-    user_index::response_user_index,
-    user_show::response_user_show,
+use super::super::{
+    service,
+    repository,
+    response,
+    request,
 };
-use super::super::request::user::{RequestUserIndex, RequestUserShow};
 
-pub fn user_index(payload: web::Query<RequestUserIndex>) -> HttpResponse {
-    let repository_user = RepositoryUser::new();
-    let domain_users = &service_user_index(
+pub fn user_index(payload: web::Query<request::user::Index>) -> HttpResponse {
+    let repository_user = repository::user::RepositoryUser::new();
+    let domain_users = &service::user::index(
         repository_user,
         payload.page,
         payload.page_size,
     );
-    response_user_index(domain_users)
+    response::user_index::response(domain_users)
 }
 
-pub fn user_show(payload: web::Query<RequestUserShow>) -> HttpResponse {
-    let repository_user = RepositoryUser::new();
-    let domain_user = &service_user_show(
+pub fn user_show(payload: web::Query<request::user::Show>) -> HttpResponse {
+    let repository_user = repository::user::RepositoryUser::new();
+    let domain_user = &service::user::show(
         repository_user,
         payload.user_id,
     );
-    response_user_show(domain_user)
+    response::user_show::response(domain_user)
 }

@@ -20,7 +20,7 @@ struct User {
     comment: i32,
 }
 
-pub fn response_user_index(domain_users: &Vec<DomainUser>) -> HttpResponse {
+pub fn response(domain_users: &Vec<DomainUser>) -> HttpResponse {
     let mut users = Vec::with_capacity(domain_users.len());
     for domain_user in domain_users {
         users.push(User {
