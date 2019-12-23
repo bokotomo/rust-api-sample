@@ -6,7 +6,6 @@ use super::super::{
     service,
     request,
     response,
-    repository
 };
 
 pub fn design_index(payload: web::Query<request::design::Index>) -> HttpResponse {
@@ -18,9 +17,6 @@ pub fn design_index(payload: web::Query<request::design::Index>) -> HttpResponse
 }
 
 pub fn pickup_index() -> HttpResponse {
-    let repository_design = repository::design::RepositoryDesign::new();
-    let domain_designs = &service::pickup::index(
-        repository_design,
-    );
+    let domain_designs = &service::pickup::index();
     response::pickup_index::response(domain_designs)
 }
