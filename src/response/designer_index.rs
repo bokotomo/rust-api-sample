@@ -24,7 +24,7 @@ struct DesignerIndex {
     designers: Vec<Designers>,
 }
 
-pub fn response_designer_index(domain_designers: &Vec<DomainDesigner>, total: &i32) -> HttpResponse {
+pub fn response(domain_designers: &Vec<DomainDesigner>, total: &i32) -> HttpResponse {
     let mut designers = Vec::with_capacity(domain_designers.len());
 
     for domain_designer in domain_designers {

@@ -1,4 +1,6 @@
 extern crate diesel;
+extern crate r2d2;
+extern crate r2d2_diesel;
 
 use diesel::prelude::*;
 //use dotenv::dotenv;
@@ -6,16 +8,30 @@ use diesel::prelude::*;
 use super::super::model::design::NewDesign;
 use super::super::schema::design;
 
-// pub static mut CONNECTION_MYSQL: MysqlConnection;
+//use diesel::MysqlConnection;
+//use r2d2_diesel::ConnectionManager;
+//use self::r2d2::ManageConnection;
 
-// pub fn establish_connection() {
-//     dotenv().ok();
-//     println!("-aaaaaaaaaaaaaaaaaaaaaa");
+//static A: ManageConnection = ManageConnection{};
 
-//     let database_url = env::var("DATABASE_URL").expect("DATABASE_URLが設定されていない。");
-//     CONNECTION_MYSQL = MysqlConnection::establish(&database_url)
-//         .unwrap_or_else(|_| panic!("接続失敗{}", database_url));
-// }
+pub fn tomo() {
+//    dotenv().ok();
+//    let database_url = env::var("DATABASE_URL").expect("DATABASE_URLが設定されていない。");
+//    print!("{}", database_url);
+//
+//    let manager = ConnectionManager::<MysqlConnection>::new(database_url);
+//    let pool = r2d2::Pool::builder().build(manager).expect("Failed to create pool.");
+//    let p = pool.clone();
+//    let connection = p.get();
+//
+//    assert!(connection.is_ok());
+
+}
+
+//pub fn connection() {
+//    let p = pool.clone();
+//    let connection = p.get();
+//}
 
 pub fn create_design(conn: &MysqlConnection, title: &str) -> usize {
     let new_design = NewDesign { title };

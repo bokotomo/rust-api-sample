@@ -2,42 +2,33 @@ use actix_web::{
     HttpResponse,
     web,
 };
-use super::super::service::design::{service_design_index, service_pickup_index, service_designer_index};
-use super::super::request::{
-    design::RequestDesignIndex,
-    designer::RequestDesignerIndex,
+use super::super::{
+    service,
+    request,
+    response,
+    repository
 };
-use super::super::response::{
-    design_index::response_design_index,
-    pickup_index::response_pickup_index,
-    designer_index::response_designer_index,
-};
-use super::super::repository::design::RepositoryDesign;
 
-pub fn design_index(payload: web::Query<RequestDesignIndex>) -> HttpResponse {
-    let repository_design = RepositoryDesign::new();
-    let (domain_designs, total) = &service_design_index(
-        repository_design,
+pub fn design_index(payload: web::Query<request::design::RequestDesignIndex>) -> HttpResponse {
+    let (domain_designs, total) = &service::design::service_design_index(
         payload.page,
         payload.page_size,
     );
-    response_design_index(domain_designs, &total)
+    response::design_index::response(domain_designs, &total)
 }
 
 pub fn pickup_index() -> HttpResponse {
-    let repository_design = RepositoryDesign::new();
-    let domain_designs = &service_pickup_index(
+    let repository_design = repository::design::RepositoryDesign::new();
+    let domain_designs = &service::design::service_pickup_index(
         repository_design,
     );
-    response_pickup_index(domain_designs)
+    response::pickup_index::response(domain_designs)
 }
 
-pub fn desinger_index(payload: web::Query<RequestDesignerIndex>) -> HttpResponse {
-    let repository_design = RepositoryDesign::new();
-    let (domain_designer, total) = &service_designer_index(
-        repository_design,
+pub fn desinger_index(payload: web::Query<request::designer::RequestDesignerIndex>) -> HttpResponse {
+    let (domain_designer, total) = &service::design::service_designer_index(
         payload.page,
         payload.page_size,
     );
-    response_designer_index(domain_designer, &total)
+    response::designer_index::response(domain_designer, &total)
 }

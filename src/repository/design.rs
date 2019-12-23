@@ -8,6 +8,7 @@ use super::super::domain::{
 //use super::super::schema::design::dsl::*;
 //use super::super::model::design::Design;
 //use diesel::prelude::*;
+use super::super::driver::db::tomo;
 
 pub struct RepositoryDesign {}
 
@@ -61,6 +62,8 @@ impl RepositoryDesign {
         //     println!("{}", res.title);
         //     println!("----------\n");
         // }
+        print!("oooooooooooooooooooooooo");
+        tomo();
 
         let mut designs = Vec::new();
         for i in 0..10 {

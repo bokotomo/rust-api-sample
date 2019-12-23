@@ -24,7 +24,7 @@ struct PickupIndex {
     pickups: Vec<Designs>,
 }
 
-pub fn response_pickup_index(domain_designs: &Vec<DomainDesign>) -> HttpResponse {
+pub fn response(domain_designs: &Vec<DomainDesign>) -> HttpResponse {
     let mut pickups = Vec::with_capacity(domain_designs.len());
     for domain_design in domain_designs {
         pickups.push(Designs {
