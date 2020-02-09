@@ -8,7 +8,7 @@ use super::super::{
     response,
 };
 
-pub fn desinger_index(payload: web::Query<request::designer::Index>) -> HttpResponse {
+pub fn index(payload: web::Query<request::designer::Index>) -> HttpResponse {
     let (domain_designer, total) = &service::designer::index(
         payload.page,
         payload.page_size,

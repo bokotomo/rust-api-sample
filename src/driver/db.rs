@@ -12,8 +12,6 @@ use super::super::schema::design;
 //use r2d2_diesel::ConnectionManager;
 //use self::r2d2::ManageConnection;
 
-//static A: ManageConnection = ManageConnection{};
-
 pub fn tomo() {
 //    dotenv().ok();
 //    let database_url = env::var("DATABASE_URL").expect("DATABASE_URLが設定されていない。");

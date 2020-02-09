@@ -8,7 +8,7 @@ use super::super::{
     request,
 };
 
-pub fn user_index(payload: web::Query<request::user::Index>) -> HttpResponse {
+pub fn index(payload: web::Query<request::user::Index>) -> HttpResponse {
     let domain_users = &service::user::index(
         payload.page,
         payload.page_size,
@@ -16,7 +16,7 @@ pub fn user_index(payload: web::Query<request::user::Index>) -> HttpResponse {
     response::user_index::response(domain_users)
 }
 
-pub fn user_show(payload: web::Query<request::user::Show>) -> HttpResponse {
+pub fn show(payload: web::Query<request::user::Show>) -> HttpResponse {
     let domain_user = &service::user::show(payload.user_id);
     response::user_show::response(domain_user)
 }

@@ -6,7 +6,7 @@ use super::super::{
     response,
 };
 
-pub fn develop_index() -> HttpResponse {
+pub fn index() -> HttpResponse {
     let (domain_develop_trends, domain_develop_popularities) = &service::develop::index();
     response::develop_index::response(domain_develop_trends, domain_develop_popularities)
 }

@@ -2,8 +2,19 @@ extern crate gcs_api;
 extern crate json;
 extern crate serde_json;
 
+extern crate diesel;
+extern crate r2d2;
+extern crate r2d2_diesel;
+
+// use diesel::prelude::*;
+
 use dotenv;
 use actix_cors::Cors;
+// use r2d2::Pool;
+// use diesel::MysqlConnection;
+// use r2d2_diesel::ConnectionManager;
+// use self::r2d2::ManageConnection;
+
 use actix_web::{
     http,
     middleware,
@@ -12,14 +23,15 @@ use actix_web::{
     HttpServer,
 };
 use gcs_api::controller::{
-    health::health_index,
-    design::{design_index, pickup_index},
-    develop::{develop_index},
-    designer::{desinger_index},
-    developper::{developper_index},
-    sample::sample_index,
-    user::{user_index, user_show},
-    job::{job_index, job_show},
+    health,
+    design,
+    pickup,
+    develop,
+    designer,
+    developper,
+    sample,
+    user,
+    job,
 };
 
 fn setup() {
@@ -30,7 +42,10 @@ fn setup() {
 fn main() -> std::io::Result<()> {
     setup();
     let url = dotenv::var("HOST").unwrap().to_string() + ":" + &dotenv::var("PORT").unwrap();
-    // let url_allowed_origin = "http://localhost:3000";
+
+    // let database_url = dotenv::var("DATABASE_URL").expect("DATABASE_URLが設定されていない。");
+    // let manager = ConnectionManager::<MysqlConnection>::new(database_url);
+    // let pool = r2d2::Pool::new(manager).unwrap();
 
     HttpServer::new(|| {
         App::new()
@@ -41,6 +56,8 @@ fn main() -> std::io::Result<()> {
                     .allowed_headers(vec![http::header::AUTHORIZATION, http::header::ACCEPT, http::header::CONTENT_TYPE])
                     .max_age(3600),
             )
+            // コネクションプール
+            // .data(pool.clone())
             // ログ有効
             .wrap(middleware::Logger::default())
             // 制限
@@ -49,57 +66,57 @@ fn main() -> std::io::Result<()> {
             .service(
                 web::resource("/health")
                     .route(web::get()
-                        .to_async(health_index)),
+                        .to_async(health::index)),
             )
             .service(
                 web::resource("/sample")
                     .route(web::get()
-                        .to_async(sample_index)),
+                        .to_async(sample::index)),
             )
             .service(
                 web::resource("/designs")
                     .route(web::get()
-                        .to_async(design_index)),
+                        .to_async(design::index)),
             )
             .service(
                 web::resource("/pickups")
                     .route(web::get()
-                        .to_async(pickup_index)),
+                        .to_async(pickup::index)),
             )
             .service(
                 web::resource("/users")
                     .route(web::get()
-                        .to_async(user_index)),
+                        .to_async(user::index)),
             )
             .service(
                 web::resource("/user")
                     .route(web::get()
-                        .to_async(user_show)),
+                        .to_async(user::show)),
             )
             .service(
                 web::resource("/designer")
                     .route(web::get()
-                        .to_async(desinger_index)),
+                        .to_async(designer::index)),
             )
             .service(
                 web::resource("/developper")
                     .route(web::get()
-                        .to_async(developper_index)),
+                        .to_async(developper::index)),
             )
             .service(
                 web::resource("/develops")
                     .route(web::get()
-                        .to_async(develop_index)),
+                        .to_async(develop::index)),
             )
             .service(
                 web::resource("/jobs")
                     .route(web::get()
-                        .to_async(job_index)),
+                        .to_async(job::index)),
             )
             .service(
                 web::resource("/job")
                     .route(web::get()
-                        .to_async(job_show)),
+                        .to_async(job::show)),
             )
     })
         .bind(url)?

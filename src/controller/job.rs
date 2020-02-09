@@ -8,7 +8,7 @@ use super::super::{
     request,
 };
 
-pub fn job_index(payload: web::Query<request::job::Index>) -> HttpResponse {
+pub fn index(payload: web::Query<request::job::Index>) -> HttpResponse {
     let domain_jobs = &service::job::index(
         payload.page,
         payload.page_size,
@@ -16,7 +16,7 @@ pub fn job_index(payload: web::Query<request::job::Index>) -> HttpResponse {
     response::job_index::response(domain_jobs)
 }
 
-pub fn job_show(payload: web::Query<request::job::Show>) -> HttpResponse {
+pub fn show(payload: web::Query<request::job::Show>) -> HttpResponse {
     let domain_job = &service::job::show(payload.job_id);
     response::job_show::response(domain_job)
 }

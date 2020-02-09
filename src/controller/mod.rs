@@ -1,6 +1,7 @@
 pub mod health;
 pub mod user;
 pub mod design;
+pub mod pickup;
 pub mod develop;
 pub mod designer;
 pub mod developper;

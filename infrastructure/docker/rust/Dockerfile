@@ -1,5 +1,5 @@
-FROM rust:1.38-stretch
- 
+FROM rust:1.41-stretch
+
 ENV USER=bokotomo
 WORKDIR /rust-actix-web
 RUN apt-get update

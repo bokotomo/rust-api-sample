@@ -8,7 +8,7 @@ use super::super::{
     response,
 };
 
-pub fn developper_index(payload: web::Query<request::developper::Index>) -> HttpResponse {
+pub fn index(payload: web::Query<request::developper::Index>) -> HttpResponse {
     let (domain_developpers, total) = &service::developper::index(
         payload.page,
         payload.page_size,
