@@ -2,9 +2,9 @@ extern crate gcs_api;
 extern crate json;
 extern crate serde_json;
 
-extern crate diesel;
-extern crate r2d2;
-extern crate r2d2_diesel;
+// extern crate diesel;
+// extern crate r2d2;
+// extern crate r2d2_diesel;
 
 // use diesel::prelude::*;
 
@@ -35,7 +35,7 @@ use gcs_api::controller::{
 };
 
 fn setup() {
-    std::env::set_var("RUST_LOG", "actix_web=info");
+    // std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 }
 
